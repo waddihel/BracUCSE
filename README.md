@@ -1,2 +1,2 @@
 # BracUCSE
-Collection of all the problems given as home work and their solutions 
+Collection of all the labworks, practice problems and homeworks of Bracu CSE Summer 2025
