@@ -18,7 +18,6 @@ public class Task1 {
     sc.close();
   }
 }
-
 // Task 2
 import java.util.Scanner;
 
@@ -39,7 +38,6 @@ public class Task2 {
       System.out.println("Your tax amount is " + salary * 0.1 + "TK");
   }
 }
-
 // Task 3
 import java.util.Scanner;
 
@@ -66,7 +64,6 @@ public class Task3 {
       System.out.println("Minimum number is: " + c);
   }
 }
-
 // Task 4
 import java.util.Scanner;
 
@@ -91,7 +88,6 @@ public class Task4 {
       System.out.println("This is an Scalene triangle");
   }
 }
-
 // Task 5
 import java.util.Scanner;
 
@@ -164,8 +160,7 @@ public class Task5 {
                          " taka more.");
   }
 }
-
-//task6
+// Task 6
 import java.util.Scanner;
 
 public class Task6 {
