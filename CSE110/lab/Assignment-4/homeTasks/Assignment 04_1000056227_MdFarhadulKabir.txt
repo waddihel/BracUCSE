@@ -1,0 +1,135 @@
+//Task 1
+
+import java.util.Scanner;
+
+public class Task1 {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    for (; n > 0; n--) {
+      int x = sc.nextInt();
+      int y = sc.nextInt();
+      int sum = 0;
+      if (x % 2 == 0)
+        x++;
+      for (int i = 0; i < y; i++) {
+        sum += x;
+        x += 2;
+      }
+      System.out.println("Output: " + sum);
+    }
+    sc.close();
+  }
+}
+//Task 2
+
+import java.util.Scanner;
+
+public class Task2 {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+
+    for (int i = 1; i <= b; i++) {
+      for (int j = 1; j <= a; j++) {
+        System.out.print(j + " ");
+      }
+      System.out.println('\n');
+    }
+    sc.close();
+  }
+}
+//Task 3
+
+import java.util.Scanner;
+
+public class Task3 {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Start: ");
+    int start = sc.nextInt();
+    System.out.print("End: ");
+    int end = sc.nextInt();
+
+    for (int i = start; i <= end; i++) {
+      boolean isPrime = true;
+      if (i < 2)
+        isPrime = false;
+      else if (i == 2 || i == 3)
+        isPrime = true;
+      else if (i % 2 == 0 || i % 3 == 0)
+        isPrime = false;
+      else {
+        for (int j = 5; i * i <= i; i += 6) {
+          if (i % j == 0 || i % (j + 2) == 0) {
+            isPrime = false;
+            break;
+          }
+        }
+      }
+      if (isPrime)
+        System.out.println(i);
+    }
+    sc.close();
+  }
+}
+//Task 4
+
+import java.util.Scanner;
+
+public class Task4 {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Number of Customer: ");
+    int n = sc.nextInt();
+
+    for (int i = 1; i <= n; i++) {
+      System.out.print("Item number for Customer-" + i + ": ");
+      int k = sc.nextInt();
+      double average = 0;
+      int sum = 0;
+
+      for (int j = 1; j <= k; j++) {
+        System.out.print("Item-" + j + ": ");
+        int price = sc.nextInt();
+
+        sum += price;
+        average = (double) sum / k;
+      }
+      System.out.println("Average for Customer-" + i + ": " + average);
+    }
+    sc.close();
+  }
+}
+//Task 5
+
+import java.util.Scanner;
+
+public class Task5 {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Start: ");
+    int start = sc.nextInt();
+    System.out.print("End: ");
+    int end = sc.nextInt();
+    System.out.println("Armstrong numbers: ");
+    for (int i = start; i <= end; i++) {
+      int sum = 0;
+      int digits = 0;
+      for (int temp = i; temp > 0; temp /= 10) {
+        digits++;
+      }
+      for (int temp = i; temp > 0; temp /= 10) {
+        int raisedDigit = 1;
+        for (int power = digits; power > 0; power--) {
+          raisedDigit *= temp % 10;
+        }
+        sum += raisedDigit;
+      }
+      if (sum == i)
+        System.out.println(i);
+    }
+    sc.close();
+  }
+}
