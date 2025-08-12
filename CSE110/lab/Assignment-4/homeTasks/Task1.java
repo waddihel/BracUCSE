@@ -1,4 +1,4 @@
-//Task 1
+// Task 1
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ public class Task1 {
       int sum = 0;
       if (x % 2 == 0)
         x++;
-      for (int i = 0; i < y; i++) {
+      for (; y > 0; y--) {
         sum += x;
         x += 2;
       }

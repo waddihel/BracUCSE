@@ -1,4 +1,4 @@
-//Task 5
+// Task 5
 
 import java.util.Scanner;
 
@@ -13,13 +13,13 @@ public class Task5 {
     for (int i = start; i <= end; i++) {
       int sum = 0;
       int digits = 0;
-      for (int temp = i; temp > 0; temp /= 10) {
+      for (int j = i; j > 0; j /= 10) {
         digits++;
       }
-      for (int temp = i; temp > 0; temp /= 10) {
+      for (int j = i; j > 0; j /= 10) {
         int raisedDigit = 1;
         for (int power = digits; power > 0; power--) {
-          raisedDigit *= temp % 10;
+          raisedDigit *= j % 10;
         }
         sum += raisedDigit;
       }
