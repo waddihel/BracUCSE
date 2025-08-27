@@ -22,12 +22,13 @@ public class Task4 {
 
     sc.close();
 
-    boolean isSubset = true;
+    boolean isSubset = false;
 
-    for (int i = 0; i + len1 <= len2; i++) {
+    for (int i = 0; i + len2 <= len1; i++) {
       isSubset = true;
-      for (int j = 0; j < len1; j++) {
-        if (arr2[i + j] != arr1[j]) {
+      for (int j = 0; j < len2; j++) {
+        System.out.println(arr1[i + j] != arr2[j]);
+        if (arr1[i + j] != arr2[j]) {
           isSubset = false;
           break;
         }
