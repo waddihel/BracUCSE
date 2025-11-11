@@ -1,3 +1,5 @@
+// Task 3
+
 public class Employee {
   public String name;
   public double salary = 30_000.0;
