@@ -29,7 +29,7 @@ public class Student {
     if (count == course.length) {
       System.out.println("Failed to add " + c);
       if (course.length == 3)
-        System.out.println("CG is low can't. add more than 3 courses.");
+        System.out.println("CG is low. can't add more than 3 courses.");
       else
         System.out.println("Maximum 4 courses allowed");
     } else {

@@ -13,9 +13,9 @@ public class TravelPrep {
     price = p;
     System.out.println(t_name + " would cost at most " + price + " yen");
   }
-  TravelPrep(String n1, String n2) { this(n1, n2, 300); }
+  TravelPrep(String n1, String n2) { this(n2, n1, 300); }
   TravelPrep(String n1, String n2, int p) {
-    t_name = n1 + n2;
+    t_name = n2 + " " + n1;
     price = p;
     System.out.println(t_name + " costs " + price + " yen");
   }

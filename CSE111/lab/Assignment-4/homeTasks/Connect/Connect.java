@@ -44,7 +44,8 @@ public class Connect {
   public void allAdviseeInfo() {
     System.out.println("Total Advisee: " + totalAdvisee);
     for (int i = 0; i < totalAdvisee; i++) {
-      System.out.println("Name: " + students[i].name + "ID: " + students[i].id);
+      System.out.println("Name: " + students[i].name +
+                         " ID: " + students[i].id);
       System.out.println("Department: " + students[i].dep);
       System.out.println("Advised Courses:\n" + students[i].courses);
       System.out.println("==============");
