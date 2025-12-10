@@ -40,7 +40,7 @@ public class ConnectFriends {
     for (int i = 0; i < friends.length; i++) {
       if (friends[i] == null)
         continue;
-      else {
+      else if (n.equals(friends[i].name)) {
         System.out.println("Request to add " + n + " is removed for " + name);
         friends[i] = null;
         fCount--;
