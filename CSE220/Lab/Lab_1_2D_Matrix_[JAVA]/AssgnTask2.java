@@ -1,11 +1,7 @@
 // Assignment Task 02: Matrix Compression
 class AssgnTask2 {
-
-  // Complete this method so that it gives the Expected Output
-  // YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
   public static Integer[][] compressMatrix(Integer[][] matrix) {
     Integer[][] ret = new Integer[matrix.length / 2][matrix[0].length / 2];
-
     for (int i = 0; i < matrix.length; i += 2) {
       for (int j = 0; j < matrix[0].length; j += 2) {
         ret[i / 2][j / 2] = matrix[i][j] + matrix[i + 1][j] + matrix[i][j + 1] +

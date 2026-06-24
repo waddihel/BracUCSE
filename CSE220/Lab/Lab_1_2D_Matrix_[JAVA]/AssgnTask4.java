@@ -1,16 +1,11 @@
 // Assignment Task 04: Rotate Secret
 class AssgnTask4 {
-
-  // Complete this method so that it gives the Expected Output
-  // YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
-  // If needed you can create extra helper static methods
-  // if extra helper methods are used then you must submit those as well
   public static void rotateSecret(Character[][] board) {
     int S = board.length;
     int I = (S / 2) - 1;
     int J = S / 2;
     int rCount = 1;
-    while (I >= 0 && J < S) {
+    while (I >= 0) {
       int i = I;
       int j = I;
       for (int r = 0; r < rCount; r++) {

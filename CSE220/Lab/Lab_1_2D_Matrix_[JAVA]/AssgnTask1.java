@@ -1,8 +1,5 @@
 // Assignment Task 01: Row Rotation Policy
 class AssgnTask1 {
-
-  // Complete this method so that it gives the Expected Output
-  // YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
   public static Integer rowRotation(Integer examWeek, String[][] matrix) {
     int R = matrix.length;
     int C = matrix[0].length;

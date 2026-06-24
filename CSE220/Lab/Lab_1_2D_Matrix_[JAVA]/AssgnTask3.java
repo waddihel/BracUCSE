@@ -1,14 +1,9 @@
 // Assignment Task 03: Game Arena
 class AssgnTask3 {
-
-  // Complete this method so that it gives the Expected Output
-  // YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
   public static void playGame(Integer[][] arena) {
     int points = 0;
-
     int R = arena.length;
     int C = arena[0].length;
-
     for (int i = 0; i < R; i++) {
       for (int j = 0; j < C; j++) {
         if (arena[i][j] % 50 == 0 && arena[i][j] != 0) {
