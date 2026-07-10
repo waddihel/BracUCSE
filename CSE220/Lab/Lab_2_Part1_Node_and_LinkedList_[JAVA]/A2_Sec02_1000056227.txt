@@ -1,0 +1,119 @@
+// AssignmentTask1: Building Blocks
+  public static String checkSimilar(Node building1, Node building2) {
+    while (building1 != null || building2 != null) {
+      if (building1 == null ^ building2 == null ||
+          !building1.elem.equals(building2.elem))
+        return "Not Similar";
+      building1 = building1.next;
+      building2 = building2.next;
+    }
+    return "Similar";
+  }
+// AssignmentTask2: Organize Books
+  public static Node organizeBooks(Node head, Integer[] popularity) {
+    while (true) {
+      Node temp = head;
+      int swap = 0;
+      for (int i = 0; i < popularity.length - 1; i++) {
+        if (popularity[i] < popularity[i + 1]) {
+          popularity[i] = popularity[i] ^ popularity[i + 1];
+          popularity[i + 1] = popularity[i] ^ popularity[i + 1];
+          popularity[i] = popularity[i] ^ popularity[i + 1];
+          String t = (String)temp.elem;
+          temp.elem = temp.next.elem;
+          temp.next.elem = t;
+          swap++;
+        }
+        temp = temp.next;
+      }
+      if (swap == 0)
+        break;
+    }
+    return head;
+  }
+// AssignmentTask3: Alternate Merge
+  public static Node alternateMerge(Node head1, Node head2) {
+    Node ret = head1;
+    Node temp1 = head1;
+    Node temp2 = head2;
+    while (temp1 != null && temp2 != null) {
+      temp1 = temp1.next;
+      temp2 = temp2.next;
+      head1.next = head2;
+      head2.next = temp1;
+      head1 = temp1;
+      head2 = temp2;
+    }
+    return ret;
+  }
+// AssignmentTask4: ID Generator
+  public static Node idGenerator(Node head1, Node head2, Node head3) {
+    Node ret = head1;
+    Node prev = head2;
+    Node next = head1.next;
+    while (next != null) {
+      ret.next = prev;
+      prev = ret;
+      ret = next;
+      next = next.next;
+      ret.next = prev;
+    }
+    while (head2 != null) {
+      head2.elem = ((int)head2.elem + (int)head3.elem) % 10;
+      head2 = head2.next;
+      head3 = head3.next;
+    }
+    return ret;
+  }
+// AssignmentTask5
+  public static void sumOddAppend(Node dh) {
+    Node oddSum = new Node((int)0);
+    oddSum.next = dh;
+    while (dh.next != oddSum.next) {
+      if ((int)dh.next.elem % 2 != 0) {
+        oddSum.elem = (int)oddSum.elem + (int)dh.next.elem;
+        dh.next = dh.next.next;
+      } else
+        dh = dh.next;
+    }
+    dh.next = oddSum;
+  }
+// AssignmentTask6
+  public static void pairJoin(DNode dh1, DNode dh2) {
+    DNode dh = dh1;
+    dh1 = dh1.next;
+    dh2 = dh2.next;
+    DNode temp = dh1.next;
+    while (temp != null) {
+      dh1.next = dh2;
+      dh2.prev = dh1;
+      temp.prev = dh2;
+      dh2 = dh2.next;
+      temp.prev.next = temp;
+      dh1 = temp;
+      temp = temp.next;
+    }
+    dh1.next = dh2;
+    dh2.prev = dh1;
+    dh2.next = dh;
+    dh.prev = dh2;
+  }
+// AssignmentTask7
+  public static void rangeMove(DNode dh, int start, int end) {
+    DNode it = dh.next;
+    DNode tail = dh.prev;
+    while (it != tail) {
+      if ((int)it.elem >= start && (int)it.elem <= end) {
+        DNode temp = it.next;
+        it.prev.next = it.next;
+        it.next.prev = it.prev;
+        it.next = dh;
+        it.prev = dh.prev;
+        dh.prev.next = it;
+        dh.prev = it;
+        it = temp;
+      } else {
+        it = it.next;
+      }
+    }
+  }

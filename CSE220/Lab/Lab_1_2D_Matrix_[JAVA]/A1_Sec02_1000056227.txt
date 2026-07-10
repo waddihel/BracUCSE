@@ -1,0 +1,99 @@
+// Assignment Task 01: Row Rotation Policy
+class AssgnTask1 {
+  public static Integer rowRotation(Integer examWeek, String[][] matrix) {
+    int R = matrix.length;
+    int C = matrix[0].length;
+    while (--examWeek > 0) {
+      for (int j = 0; j < C; j++) {
+        String t1 = matrix[0][j];
+        String t2 = matrix[1][j];
+        for (int i = 0; i < R; i++) {
+          matrix[(i + 1) % R][j] = t1;
+          t1 = t2;
+          t2 = matrix[(i + 2) % R][j];
+        }
+      }
+    }
+    Arr.print2D(matrix);
+    for (int i = 0; i < R; i++) {
+      if (matrix[i][0].equals("Z"))
+        return i + 1;
+    }
+    return -1;
+  }
+
+// Assignment Task 02: Matrix Compression
+class AssgnTask2 {
+  public static Integer[][] compressMatrix(Integer[][] matrix) {
+    Integer[][] ret = new Integer[matrix.length / 2][matrix[0].length / 2];
+    for (int i = 0; i < matrix.length; i += 2) {
+      for (int j = 0; j < matrix[0].length; j += 2) {
+        ret[i / 2][j / 2] = matrix[i][j] + matrix[i + 1][j] + matrix[i][j + 1] +
+                            matrix[i + 1][j + 1];
+      }
+    }
+    return ret;
+  }
+
+// Assignment Task 03: Game Arena
+class AssgnTask3 {
+  public static void playGame(Integer[][] arena) {
+    int points = 0;
+    int R = arena.length;
+    int C = arena[0].length;
+    for (int i = 0; i < R; i++) {
+      for (int j = 0; j < C; j++) {
+        if (arena[i][j] % 50 == 0 && arena[i][j] != 0) {
+          if (i != 0)
+            points += (arena[i - 1][j] == 2) ? 2 : 0;
+          if (j != 0)
+            points += (arena[i][j - 1] == 2) ? 2 : 0;
+          if (i != R - 1)
+            points += (arena[i + 1][j] == 2) ? 2 : 0;
+          if (j != C - 1)
+            points += (arena[i][j + 1] == 2) ? 2 : 0;
+        }
+      }
+    }
+    System.out.println("Points Gained: " + points + ". " +
+                       ((points >= 10) ? "Your team has survived the game."
+                                       : "Your team is out."));
+  }
+
+// Assignment Task 04: Rotate Secret
+class AssgnTask4 {
+  public static void rotateSecret(Character[][] board) {
+    int S = board.length;
+    int I = (S / 2) - 1;
+    int J = S / 2;
+    int rCount = 1;
+    while (I >= 0) {
+      int i = I;
+      int j = I;
+      for (int r = 0; r < rCount; r++) {
+        Character t1 = board[I][I];
+        Character t2;
+        do {
+          if (i == I && j != J)
+            t2 = board[i][++j];
+          else if (i != J && j == J)
+            t2 = board[++i][j];
+          else if (i == J && j != I)
+            t2 = board[i][--j];
+          else
+            t2 = board[--i][j];
+          board[i][j] = t1;
+          t1 = t2;
+        } while (i != I || j != I);
+      }
+      I--;
+      J++;
+      rCount++;
+    }
+    for (int i = 0; i < S; i++) {
+      for (int j = 0; j < S; j++) {
+        System.out.print(board[i][j]);
+      }
+    }
+    System.out.println();
+  }
