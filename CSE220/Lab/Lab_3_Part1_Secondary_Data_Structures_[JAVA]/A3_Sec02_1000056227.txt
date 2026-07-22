@@ -1,0 +1,108 @@
+  //Part 1 Task 1:
+  private int hashFunction(Integer key) {
+    return (key + 3) % ht.length;
+  }
+  public void remove(Integer key) {
+    int idx = hashFunction(key);
+    PairNode it = ht[idx];
+    if (it == null) return;
+    PairNode prev = null;
+    while (it != null) {
+      if (it.key == key) {
+        if (prev == null) ht[idx] = it.next;
+        else prev.next = it.next;
+        return;
+      }
+      prev = it;
+      it = it.next;
+    }
+  }
+
+  //Part 1 Task 2:
+  private int hashFunction(String key) {
+    int sum = 0;
+    key += (key.length() % 2 != 0) ? "N" : "";
+    for (int i = 0; i < key.length() - 1; i += 2)
+      sum += key.charAt(i) * ((key.charAt(i + 1) >= 100) ? 1_000 : 100) + key.charAt(i + 1);
+
+    return sum % ht.length;
+  }
+  public String searchHashtable(Object[] keyValuePair) {
+    for (PairNode it = ht[hashFunction((String) keyValuePair[0])]; it != null; it = it.next)
+      if ((int) keyValuePair[1] == it.value) return "Found";
+    return "Not Found";
+  }
+
+  //Part 2 Task 1:
+  public static Stack conditionalReverse(Stack stack) {
+    Stack ret = new Stack();
+    ret.push(stack.pop());
+    while (!stack.isEmpty()) {
+      if (stack.peek() != ret.peek()) {
+        ret.push(stack.pop());
+      } else stack.pop();
+    }
+    return ret;
+  }
+  
+  //Part 2 Task 2:
+  public static String hotPotato(String[] players, int k) {
+    LinkedListQueue queue = new LinkedListQueue();
+    for (int i = 0; i < players.length; i++) {
+      queue.enqueue(players[i]);
+    }
+    String it = new String();
+    while (!queue.isEmpty()) {
+      for (int i = 0; i < k; i++) {
+        queue.enqueue(queue.dequeue());
+      }
+      it = (String) queue.dequeue();
+      if (!queue.isEmpty()) System.out.println(it + " eliminated");
+    }
+    return it;
+  }
+
+  //Part 2 Task 3:
+  public static void dance_pair(Stack stk) {
+    Queue male = new Queue();
+    Queue female = new Queue();
+    int counter = 0;
+    Dancer temp = (Dancer) stk.pop();
+    while (!stk.isEmpty()) {
+      if (temp.getGender() == ((Dancer) stk.peek()).getGender()) {
+        if (!female.isEmpty() && temp.getGender() == 'M') {
+          System.out.printf(
+              "#%d: %s & %s\n", ++counter, temp.toString(), female.dequeue().toString());
+        } else if (temp.getGender() == 'F') female.enqueue(temp);
+        else if (temp.getGender() == 'M') male.enqueue(temp);
+      } else {
+        System.out.printf("#%d: %s & %s\n", ++counter, temp.toString(), stk.pop().toString());
+      }
+      temp = (Dancer) stk.pop();
+    }
+    if (temp != null) {
+      if (temp.getGender() == 'F') female.enqueue(temp);
+      else if (temp.getGender() == 'M') male.enqueue(temp);
+    }
+
+    if (!male.isEmpty() && !female.isEmpty()) {
+      System.out.println("Extra Pair:");
+      while (!male.isEmpty() && !female.isEmpty()) {
+        System.out.printf("#%d: %s & %s\n", ++counter, temp.toString(), stk.pop().toString());
+      }
+    }
+    if (!male.isEmpty()) {
+      System.out.println("Unpaired Male:");
+      System.out.printf("%s", male.dequeue());
+      while (!male.isEmpty()) {
+        System.out.printf(", %s", male.dequeue());
+      }
+    }
+    if (!female.isEmpty()) {
+      System.out.println("Unpaired Female:");
+      System.out.printf("%s", female.dequeue());
+      while (!female.isEmpty()) {
+        System.out.printf(", %s", female.dequeue());
+      }
+    }
+  }
