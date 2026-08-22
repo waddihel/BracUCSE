@@ -7,22 +7,13 @@ public class Task6 {
   // This method returns an Integer
   // At times you may need to typeCast root.elem to Integer
   // You can use extra helper private static methods with extra extra params as per need
-  static int CURRENT_LEVEL = -1;
-
   public static Integer subtractSummation(BTNode root) {
-    CURRENT_LEVEL++;
-    if (root == null) {
-      CURRENT_LEVEL--;
-      return 0;
-    }
-    if (CURRENT_LEVEL == 0) {
-      int s = subtractSummation(root.left) - subtractSummation(root.right);
-      CURRENT_LEVEL--;
-      return s;
-    }
-    int s = (int) root.elem + subtractSummation(root.left) + subtractSummation(root.right);
-    CURRENT_LEVEL--;
-    return s;
+    return subSumHelper(root.left) - subSumHelper(root.right);
+  }
+
+  private static Integer subSumHelper(BTNode root) {
+    if (root == null) return 0;
+    return (Integer) root.elem + subSumHelper(root.left) + subSumHelper(root.right);
   }
   // ============================================================================
 
